@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy 3 Months, Yatharth ❤️</title>
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff6bcb, #ffb86b);
+      font-family: 'Quicksand', sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+      transition: transform 1s ease-in-out; 
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      z-index: 2;
+      transition: transform 1s ease-in-out; 
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-top: 10px;
+    }
+
+    .slideshow {
+      font-size: 1.3rem;
+      max-width: 700px;
+      min-height: 150px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 2;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-style: italic;
+      opacity: 0.7;
+      z-index: 2;
+    }
+
+    .hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      background-image: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHU0cHU1YXl5YXYwb2JyczdlMTNhbzR4NWE3eng0OXJ6Z3l0Z2hneSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/TmngSmlDjzJfO/giphy.gif');
+      background-repeat: repeat;
+      background-size: 150px;
+      opacity: 0.2;
+      animation: floatHearts 60s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes floatHearts {
+      from { background-position: 0 0; }
+      to { background-position: 0 -1000px; }
+    }
+
+    audio {
+      display: none;
+    }
+
+    #playBtn {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #e5abf5;
+      color: #ff6bcb;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 12px;
+      padding: 15px 40px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(255, 107, 203, 0.6);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+      z-index: 10;
+    }
+
+    #playBtn:hover {
+      background-color: #ff6bcb;
+      color: white;
+      box-shadow: 0 6px 15px rgba(255, 107, 203, 0.9);
+    }
+
+    #videoContainer {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      max-width: 90%;
+      z-index: 5;
+      height: 90vh;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+      transform: rotate(-90deg); 
+      transform-origin: center center; 
+    }
+
+    #loveText {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+      z-index: 10;
+      display: none; 
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+
+    #headerMessage {
+      position: absolute; 
+      top: 10px; 
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: white;
+      z-index: 10;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      display: none; 
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .moveUp {
+      transform: translateY(-100vh); 
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hearts"></div>
+
+  <div class="container" id="container">
+    <h1 id="mainHeader">Happy 3rd Month Anniversary, Sharma jiiii 💖</h1>
+    <div class="slideshow" id="slideshow"></div>
+    <div class="footer">I love you to the moon and back.</div>
+    <div class="footer">Forever and always... ❤️</div>
+  </div>
+
+  <button id="playBtn">Play Music 🎵</button>
+
+  <audio id="bgAudio" loop>
+    <source src="perfect.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <div id="videoContainer">
+    <video id="finalVideo" controls>
+      <source src="vani.mp4" type="video/mp4" />
+      Your browser does not support the video element.
+    </video>
+  </div>
+
+  <div id="loveText">Love you always💕</div>
+
+  <div id="headerMessage">A Message...</div>
+
+  <div id="centerLoveText" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 3rem; font-weight: bold; color: white; opacity: 0; transition: opacity 2s ease-in-out;">Love you always💕</div>
+
+<script>
+  const playBtn = document.getElementById('playBtn');
+  const bgAudio = document.getElementById('bgAudio');
+  const slideshowEl = document.getElementById('slideshow');
+  const videoContainer = document.getElementById('videoContainer');
+  const finalVideo = document.getElementById('finalVideo');
+  const loveText = document.getElementById('loveText');
+  const headerMessage = document.getElementById('headerMessage');
+  const mainHeader = document.getElementById('mainHeader');
+  const container = document.getElementById('container');
+
+  const messages = [
+    "A Special Celebration 💕",
+    "3 months of joy, laughter, and beautiful moments together.",
+    "It’s only been 3 months, but it feels like I’ve known you forever… in the best way.❤️❤️",
+    "You're the best part of my day, every single day.",
+    "Thanks for all the laughs, the sweet moments, and all the fun we have together. You're my favorite.💖",
+    "In just 3 months, you've managed to steal my heart completely.🦋❤️✨",
+    "You're the one I want to share all the crazy, funny, and even the quiet moments with.🌟💫",
+    "Three months ago, I had no idea how much joy you'd bring into my life.",
+    "Every message from you makes me smile. Every moment with you feels right.",
+    "You make ordinary days feel extraordinary just by being in them.",
+    "Your laugh is my favorite sound, your smile is my favorite sight.",
+    "These 3 months have been filled with more happiness than I could have imagined.",
+    "I'm so grateful for every conversation, every joke, every shared moment.☺️",
+    "Here's to 3 months of us... and to so many more amazing moments ahead.",
+    "3 months down, forever to go. You're my star, my everything, Yatharth.💫"
+  ];
+
+  let index = 0;
+  let slideshowInterval;
+
+  function showMessage() {
+    slideshowEl.style.opacity = 0;
+    setTimeout(() => {
+      slideshowEl.textContent = messages[index];
+      slideshowEl.style.opacity = 1;
+      index++;
+      if(index >= messages.length) {
+        clearInterval(slideshowInterval);
+ 
+        setTimeout(() => {
+          bgAudio.pause(); 
+          videoContainer.style.display = 'block'; 
+          finalVideo.play(); 
+        }, 1000); 
+      }
+    }, 1000);
+  }
+
+  playBtn.addEventListener('click', () => {
+    bgAudio.play();
+    playBtn.style.display = 'none';
+
+    showMessage();
+    slideshowInterval = setInterval(showMessage, 5000);
+  });
+
+  finalVideo.addEventListener('play', () => {
+    bgAudio.pause(); 
+
+    container.classList.add('moveUp');
+    mainHeader.classList.add('hidden');
+    document.querySelectorAll('.footer').forEach(footer => footer.classList.add('hidden'));
+
+    headerMessage.style.display = 'block';
+    setTimeout(() => {
+      headerMessage.style.opacity = 1;
+    }, 100);
+
+  
+    finalVideo.addEventListener('ended', () => {
+      loveText.style.display = 'block';
+      setTimeout(() => {
+        loveText.style.opacity = 1;
+      }, 100);
+
+      const centerLoveText = document.getElementById('centerLoveText');
+      centerLoveText.style.opacity = 1; 
+    });
+  });
+</script>
+
+</body>
+</html>
